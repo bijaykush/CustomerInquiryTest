@@ -31,7 +31,7 @@ namespace CustomerInquiry.Data.DataContext
                 context.SaveChanges();
             }
 
-            System.Console.WriteLine("Seeding... - End");
+            Console.WriteLine("Seeding... - End");
         }
     }
 }
