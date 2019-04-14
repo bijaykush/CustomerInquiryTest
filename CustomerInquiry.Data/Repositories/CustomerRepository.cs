@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CustomerInquiry.Data.DataContext;
@@ -19,16 +18,15 @@ namespace CustomerInquiry.Data.Repositories
 
         public async Task<CustomerProfile> GetCustomersAsync(CustomerInquiryFilter customerInquiryFilter)
         {
-            var query = (from c in _customerInquiryDBContext.Customers
-                         join t in _customerInquiryDBContext.Transactions on c.CustomerId equals t.CustomerId
-                         select new CustomerProfile
-                         {
-                             CustomerId = c.CustomerId,
-                             Email = c.ContactEmail,
-                             Name = c.CustomerName,
-                             MobileNumber = c.MobileNumber,
-                             RecentTransactions = c.RecentTransactions.OrderByDescending(x => x.TransactionDateTime).Take(5).ToList()
-                         });
+            var query = (from c in _customerInquiryDBContext.Customers.Include("Transactions")
+                        select new CustomerProfile
+                        {
+                            CustomerId = c.CustomerId,
+                            Name = c.CustomerName,
+                            Email = c.ContactEmail,
+                            MobileNumber = c.MobileNumber,
+                            RecentTransactions = c.RecentTransactions.OrderByDescending(x => x.TransactionDateTime).Take(5).ToList()
+                        });
 
             if (string.IsNullOrEmpty(customerInquiryFilter.Email))
             {
