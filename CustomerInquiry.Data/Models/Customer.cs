@@ -17,7 +17,10 @@ namespace CustomerInquiry.Data.Models
         [Key]
         [RegularExpression(@"^[0-9]{1,10}$", ErrorMessage = "Customer Id should not contain characters")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CustomerId { get; set; }
+        public int Id { get; set; }
+
+        [RegularExpression(@"^[0-9]{1,10}$", ErrorMessage = "Customer Id should not contain characters")]
+        public long CustomerId { get; set; }
 
         [Column(TypeName = "varchar(30)")]
         public string CustomerName { get; set; }

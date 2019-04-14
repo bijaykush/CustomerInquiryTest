@@ -4,7 +4,7 @@ namespace CustomerInquiry.Data.Models
 {
     public class CustomerInquiryFilter
     {
-        public int? CustomerId { get; set; }
+        public long? CustomerId { get; set; }
 
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "Invalid email address")]

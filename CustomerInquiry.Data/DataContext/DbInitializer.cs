@@ -14,8 +14,8 @@ namespace CustomerInquiry.Data.DataContext
 
             var customers = new List<Customer>
             {
-                new Customer { CustomerName = "Bijay Kushawaha", ContactEmail = "bijaykush2012@gmail.com", MobileNumber = "9849881591"},
-                new Customer { CustomerName = "Ajay Kushawaha", ContactEmail = "ajaykush2012@gmail.com", MobileNumber = "9849881591"},
+                new Customer {CustomerId = 123456, CustomerName = "Bijay Kushawaha", ContactEmail = "bijaykush2012@gmail.com", MobileNumber = "9849881591"},
+                new Customer {CustomerId = 1234567890, CustomerName = "Ajay Kushawaha", ContactEmail = "ajaykush2012@gmail.com", MobileNumber = "9849881591"},
             };
 
             var transactions = new List<Transaction>

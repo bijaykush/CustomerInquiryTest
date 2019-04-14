@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CustomerInquiry.Data.Migrations
 {
     [DbContext(typeof(CustomerInquiryDBContext))]
-    [Migration("20190414071642_migrate1")]
+    [Migration("20190414083512_migrate1")]
     partial class migrate1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,12 +23,14 @@ namespace CustomerInquiry.Data.Migrations
 
             modelBuilder.Entity("CustomerInquiry.Data.Models.Customer", b =>
                 {
-                    b.Property<int>("CustomerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ContactEmail")
                         .HasColumnType("varchar(25)");
+
+                    b.Property<long>("CustomerId");
 
                     b.Property<string>("CustomerName")
                         .HasColumnType("varchar(30)");
@@ -36,7 +38,7 @@ namespace CustomerInquiry.Data.Migrations
                     b.Property<string>("MobileNumber")
                         .HasMaxLength(10);
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("Id");
 
                     b.ToTable("Customer");
                 });

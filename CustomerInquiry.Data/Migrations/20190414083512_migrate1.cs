@@ -12,15 +12,16 @@ namespace CustomerInquiry.Data.Migrations
                 name: "Customer",
                 columns: table => new
                 {
-                    CustomerId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CustomerId = table.Column<long>(nullable: false),
                     CustomerName = table.Column<string>(type: "varchar(30)", nullable: true),
                     ContactEmail = table.Column<string>(type: "varchar(25)", nullable: true),
                     MobileNumber = table.Column<string>(maxLength: 10, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customer", x => x.CustomerId);
+                    table.PrimaryKey("PK_Customer", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -42,7 +43,7 @@ namespace CustomerInquiry.Data.Migrations
                         name: "FK_Transaction_Customer_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customer",
-                        principalColumn: "CustomerId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 

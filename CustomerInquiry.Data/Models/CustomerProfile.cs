@@ -8,7 +8,7 @@ namespace CustomerInquiry.Data.Models
         {
             RecentTransactions = new List<Transaction>();
         }
-        public int CustomerId { get; set; }
+        public long CustomerId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string MobileNumber { get; set; }
